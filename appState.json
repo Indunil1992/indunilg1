@@ -8,7 +8,8 @@
         "type": "DIRECTORY",
         "isDirectory": true,
         "children": [
-          "f26021ff-0772-4954-99d1-ff5267819177"
+          "f26021ff-0772-4954-99d1-ff5267819177",
+          "36975a97-c098-4c59-9141-8c1c0083af92"
         ],
         "isRemovable": false,
         "filePath": "indunilg1"
@@ -22,19 +23,15 @@
         "children": [],
         "isRemovable": true,
         "filePath": "indunilg1/function.js",
-        "code": "exports.handler = function(request, response) {\n    \n    response.send({\"message\": \"Successfully executed\"});\n}",
+        "code": "let google = require('googleapis').google;\nlet _auth = require('./Authorizer');\nconst pubsub = google.pubsub('v1');\n\nexports.handler = function (request, response) {\n    pubsub.projects.topics.subscriptions.list({\n        topic: `projects/${process.env.GCP_PROJECT}/topics/cloud-builds`,\n        pageSize: 10\n    })\n        .then(response => {\n            console.log(response.data);  // successful response\n            /*\n            response.data = {\n                \"subscriptions\": [\n                    \"projects/<project>/subscriptions/<subscription-1>\",\n                    \"projects/<project>/subscriptions/<subscription-2>\",\n                    ...\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    response.send({ \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8",
           "timeout": 60,
           "memory": 128,
-          "triggerType": 0
+          "triggerType": 0,
+          "handler": "handler"
         },
-        "triggers": [
-          {
-            "resourceName": "http-trigger",
-            "config": {}
-          }
-        ]
+        "triggers": []
       },
       "948b44c1-08e6-4718-a724-ba2307741413": {
         "id": "948b44c1-08e6-4718-a724-ba2307741413",
@@ -57,6 +54,17 @@
         "isRemovable": false,
         "filePath": "main.py",
         "code": "# This file is used to register all your cloud functions in GCP.\n# DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\n"
+      },
+      "36975a97-c098-4c59-9141-8c1c0083af92": {
+        "id": "36975a97-c098-4c59-9141-8c1c0083af92",
+        "parent": "852d7f46-b0b1-4a41-b47e-312d85b3b748",
+        "name": "Authorizer.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "indunilg1/Authorizer.js",
+        "code": "const google = require(\"googleapis\").google;\n\ngoogle.options({auth: new google.auth.Compute()});"
       }
     },
     "deletedFiles": [],
@@ -66,10 +74,16 @@
     ],
     "currentFileId": "f26021ff-0772-4954-99d1-ff5267819177",
     "resources": {
-      "http-trigger": {
-        "name": "http-trigger",
-        "type": "http-trigger",
-        "config": {}
+      "pubsubcloudBuilds": {
+        "name": "pubsubcloudBuilds",
+        "type": "pubsub",
+        "config": {
+          "mode": 1,
+          "topic": {
+            "name": "cloud-builds",
+            "subscriptions": []
+          }
+        }
       }
     },
     "customTemplate": {
@@ -87,7 +101,15 @@
       }
     ],
     "packageJSON": {
-      "dependencies": {}
+      "dependencies": {
+        "googleapis": {
+          "name": "googleapis",
+          "language": "javascript",
+          "version": "29.0.0",
+          "dev": false,
+          "notRemovable": false
+        }
+      }
     }
   },
   "PROJECT_META": {
@@ -99,7 +121,7 @@
     "platformRegions": {
       "AWS": "us-east-1"
     },
-    "lastSave": 1567069671210
+    "lastSave": 1567070218746
   },
   "VCS_STATE": {
     "provider": "GitHub",
