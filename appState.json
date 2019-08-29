@@ -1,0 +1,111 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "852d7f46-b0b1-4a41-b47e-312d85b3b748": {
+        "id": "852d7f46-b0b1-4a41-b47e-312d85b3b748",
+        "parent": null,
+        "name": "indunilg1",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "f26021ff-0772-4954-99d1-ff5267819177"
+        ],
+        "isRemovable": false,
+        "filePath": "indunilg1"
+      },
+      "f26021ff-0772-4954-99d1-ff5267819177": {
+        "id": "f26021ff-0772-4954-99d1-ff5267819177",
+        "parent": "852d7f46-b0b1-4a41-b47e-312d85b3b748",
+        "name": "function.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "indunilg1/function.js",
+        "code": "exports.handler = function(request, response) {\n    \n    response.send({\"message\": \"Successfully executed\"});\n}",
+        "config": {
+          "runtime": "nodejs8",
+          "timeout": 60,
+          "memory": 128,
+          "triggerType": 0
+        },
+        "triggers": [
+          {
+            "resourceName": "http-trigger",
+            "config": {}
+          }
+        ]
+      },
+      "948b44c1-08e6-4718-a724-ba2307741413": {
+        "id": "948b44c1-08e6-4718-a724-ba2307741413",
+        "parent": null,
+        "name": "index.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": false,
+        "filePath": "index.js",
+        "code": "// This file is used to register all your cloud functions in GCP.\n// DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\nexports.indunilg1function = require(\"./indunilg1/function.js\").handler;"
+      },
+      "42ca3c25-9284-4faf-a0b2-47863afc825b": {
+        "id": "42ca3c25-9284-4faf-a0b2-47863afc825b",
+        "parent": null,
+        "name": "main.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": false,
+        "filePath": "main.py",
+        "code": "# This file is used to register all your cloud functions in GCP.\n# DO NOT EDIT/DELETE THIS, UNLESS YOU KNOW WHAT YOU ARE DOING.\n\n"
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "852d7f46-b0b1-4a41-b47e-312d85b3b748",
+    "openFiles": [
+      "f26021ff-0772-4954-99d1-ff5267819177"
+    ],
+    "currentFileId": "f26021ff-0772-4954-99d1-ff5267819177",
+    "resources": {
+      "http-trigger": {
+        "name": "http-trigger",
+        "type": "http-trigger",
+        "config": {}
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "AWS_REGION",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {}
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "indunilg1",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east1",
+    "platform": "GCP",
+    "platformRegions": {
+      "AWS": "us-east-1"
+    },
+    "lastSave": 1567069671210
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "indunilg1",
+      "url": "https://github.com/Indunil1992/indunilg1"
+    }
+  }
+}
