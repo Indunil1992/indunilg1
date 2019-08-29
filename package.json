@@ -2,7 +2,9 @@
   "name": "indunilg1",
   "version": "1.0.0",
   "dependencies": {
-    "googleapis": "29.0.0"
+    "googleapis": "29.0.0",
+    "aws-sdk": "2.176.0",
+    "slappforge-sdk-aws": "0.0.5"
   },
   "devDependencies": {}
 }
